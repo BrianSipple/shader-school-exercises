@@ -7,5 +7,6 @@ varying vec3 fragColor;
 
 void main() {
   fragColor = color;
+
   gl_Position = position;
 }
