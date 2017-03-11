@@ -8,7 +8,6 @@ uniform float shininess;
 varying vec3 vEyeDirection;
 varying vec3 vSurfaceNormal;
 
-
 float phongWeight(
   vec3 surfaceNormal,
   vec3 eyeDirection,
