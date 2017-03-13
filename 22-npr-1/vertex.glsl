@@ -15,6 +15,18 @@ uniform vec3 diffuse;
 uniform vec3 lightDirection;
 uniform float numBands;
 
+varying vec3 vSurfaceNormal;
+
+
+/**
+ * CHALLENGE: Modify the Lambert diffuse lighting model
+ * from `light-2` to support cel shading
+ */
 void main() {
-  gl_Position = vec4(position,1);
+  vec4 viewPosition = view * model * vec4(position, 1.0);
+  vec4 worldNormal = vec4(normal, 0.0) * inverseModel;
+
+  vSurfaceNormal = worldNormal.xyz;
+
+  gl_Position = projection * viewPosition;
 }
