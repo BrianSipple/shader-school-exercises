@@ -15,6 +15,16 @@ uniform vec3 warm;
 uniform vec3 cool;
 uniform vec3 lightDirection;
 
+varying vec3 vSurfaceNormal;
+
+/**
+ * CHALLENGE: Implement the two color version of Gooch shading
+ */
 void main() {
-  gl_Position = vec4(position,1);
+  vec4 viewPosition = view * model * vec4(position, 1.0);
+  vec4 worldNormal = vec4(normal, 0.0) * inverseModel;
+
+  vSurfaceNormal = worldNormal.xyz;
+
+  gl_Position = projection * viewPosition;
 }
